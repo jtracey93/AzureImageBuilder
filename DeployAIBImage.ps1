@@ -24,16 +24,16 @@ $currentAzContext = Get-AzContext
 # Get your current subscription ID. 
 $subscriptionID=$currentAzContext.Subscription.Id
 # Destination image resource group
-$imageResourceGroup="AzureImageBuilder3"
+$imageResourceGroup="jt-weu-rsg-aib-temp-001"
 # Location
-$location="northeurope"
+$location="westeurope"
 # Image distribution metadata reference name
-$runOutputName="aibCustWinManImg02ro"
+$runOutputName="jtw10aib01ro"
 # Image template name
 $imageTemplateName="helloImageTemplateWin10ps"
 # Distribution properties object name (runOutput).
 # This gives you the properties of the managed image on completion.
-$runOutputName="winclientR01"
+$runOutputName="JTWindows10AIB"
 
 # 2.1 Create a resource group for Image Template and Shared Image Gallery
 New-AzResourceGroup `
@@ -77,13 +77,13 @@ https://docs.microsoft.com/azure/role-based-access-control/troubleshooting
 
 ## 3. CREATE THE SHARED IMAGE GALLERY
 # Set Image gallery name
-$sigGalleryName= "AIBSIG"
+$sigGalleryName= "jtweusig001"
 
 # Image definition name - define an appropriate name
 # Server:
-$imageDefName ="winSvrimage"
+$imageDefName ="win10MSimage"
 # Or Win 10 Client 
-$imageDefName ="win10imageAppsTeams"
+$imageDefName ="win10MSImage"
 
 # Additional replication region, this is the secondary Azure region in addition to the $location above.
 $replRegion2="westeurope"
@@ -113,9 +113,9 @@ New-AzGalleryImageDefinition `
    -Name $imageDefName `
    -OsState generalized `
    -OsType Windows `
-   -Publisher 'myCompany' `
-   -Offer 'Windows-10-App-Teams' `
-   -Sku '19h2-evd'
+   -Publisher 'JTLab' `
+   -Offer 'Windows-10-MS' `
+   -Sku '20h1-evd-o365pp'
 
 
 ## 3.2 DOWNLOAD AND CONFIGURE THE TEMPLATE WITH YOUR PARAMS
