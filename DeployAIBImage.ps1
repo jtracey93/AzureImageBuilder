@@ -28,12 +28,12 @@ $imageResourceGroup="jt-weu-rsg-aib-temp-001"
 # Location
 $location="westeurope"
 # Image distribution metadata reference name
-$runOutputName="jtw10aib01ro"
+$runOutputName="jtw10aib01ro3"
 # Image template name
-$imageTemplateName="helloImageTemplateWin10ps"
+$imageTemplateName="JTWindows10AIB3"
 # Distribution properties object name (runOutput).
 # This gives you the properties of the managed image on completion.
-$runOutputName="JTWindows10AIB"
+$runOutputName="JTWindows10AIB3"
 
 # 2.1 Create a resource group for Image Template and Shared Image Gallery
 New-AzResourceGroup `
@@ -142,11 +142,26 @@ Invoke-WebRequest `
    -replace '<region2>',$replRegion2 | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<imgBuilderId>',$identityNameResourceId) | Set-Content -Path $templateFilePath
 
+## 2. AIB - CREATE VARIABLES
+# Get existing context
+$currentAzContext = Get-AzContext
+# Get your current subscription ID. 
+$subscriptionID=$currentAzContext.Subscription.Id
+# Destination image resource group
+$imageResourceGroup="jt-weu-rsg-aib-temp-001"
+# Location
+$location="westeurope"
+# Image template name
+$imageTemplateName="jtwin10msaib5"
+# Distribution properties object name (runOutput).
+# This gives you the properties of the managed image on completion.
+$runOutputName="jtwin10msaib5ro"
+
 ##CREATE THE IMAGE VERSION
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -api-version "2019-05-01-preview" `
+   -api-version "2020-02-14" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 
@@ -155,7 +170,7 @@ New-AzResourceGroupDeployment `
    -ResourceName $imageTemplateName `
    -ResourceGroupName $imageResourceGroup `
    -ResourceType Microsoft.VirtualMachineImages/imageTemplates `
-   -ApiVersion "2019-05-01-preview" `
+   -ApiVersion "2020-02-14" `
    -Action Run
 
 
