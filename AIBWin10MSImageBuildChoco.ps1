@@ -10,12 +10,12 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco feature enable -n=allowGlobalConfirmation
 
 # Install Apps Via Chocolately
-chco install 7zip
-chco install adobereader
-chco install git
-chco install notepadplusplus
-chco install vscode
-chco install putty
-chco install vlc
-chco install winscp
-chco install pwsh
+choco install 7zip
+choco install adobereader
+choco install git
+choco install notepadplusplus
+choco install vscode
+choco install putty
+choco install vlc
+choco install winscp
+choco install pwsh
