@@ -97,14 +97,15 @@
                 {   
                     "type": "SharedImage",
                     "galleryImageId": "/subscriptions/090366b9-17c2-4706-86e4-cdd0ed415ddf/resourceGroups/jt-weu-rsg-aib-temp-001/providers/Microsoft.Compute/galleries/jtweusig001/images/win10MSImage",
-                    "runOutputName": "JTWindows10AIB",
+                    "runOutputName": "JTWindows10AIB2",
                     "artifactTags": {
                         "source": "azureVmImageBuilder",
                         "baseosimg": "20h1-evd-o365pp"
                     },
                     "replicationRegions": [
                       "northeurope",
-                      "westeurope"
+                      "westeurope",
+                      "eastus"
                     ]
                 }
             ]
