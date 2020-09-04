@@ -57,7 +57,6 @@
                     {
                         "type": "PowerShell",
                         "name": "InstallApps",
-                        "runElevated": "true",
                         "scriptUri": "https://raw.githubusercontent.com/jtracey93/AzureImageBuilder/master/AIBWin10MSImageBuildChoco.ps1"
                     },
                     {
@@ -94,13 +93,22 @@
                         "restartCommand": "shutdown /r /f /t 0",
                         "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                         "restartTimeout": "5m"
+                    },
+                    {
+                        "type": "PowerShell",
+                        "name": "SysPrepFix",
+                        "inline": [
+                            "New-Item -Path HKLM:\\Software\\Microsoft\\DesiredStateConfiguration",
+                            "New-ItemProperty -Path HKLM:\\Software\\Microsoft\\DesiredStateConfiguration -Name 'AgentId' -PropertyType STRING -Force"
+                        ]
                     }
+
                 ],
                 "distribute": [
                     {
                         "type": "SharedImage",
                         "galleryImageId": "/subscriptions/090366b9-17c2-4706-86e4-cdd0ed415ddf/resourceGroups/jt-weu-rsg-aib-temp-001/providers/Microsoft.Compute/galleries/jtweusig001/images/win10MSImage",
-                        "runOutputName": "jtwin10msaib6ro",
+                        "runOutputName": "jtwin10msaib7ro",
                         "artifactTags": {
                             "source": "azureVmImageBuilder",
                             "baseosimg": "20h1-evd-o365pp"

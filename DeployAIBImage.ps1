@@ -152,10 +152,10 @@ $imageResourceGroup="jt-weu-rsg-aib-temp-001"
 # Location
 $location="westeurope"
 # Image template name
-$imageTemplateName="jtwin10msaib6"
+$imageTemplateName="jtwin10msaib7"
 # Distribution properties object name (runOutput).
 # This gives you the properties of the managed image on completion.
-$runOutputName="jtwin10msaib6ro"
+$runOutputName="jtwin10msaib7ro"
 
 ##CREATE THE IMAGE VERSION
 New-AzResourceGroupDeployment `
