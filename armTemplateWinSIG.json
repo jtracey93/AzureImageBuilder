@@ -88,8 +88,13 @@
                             "include:$true"
                         ],
                         "updateLimit": 40
+                    },
+                    {
+                        "type": "WindowsRestart",
+                        "restartCommand": "shutdown /r /f /t 0",
+                        "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                        "restartTimeout": "5m"
                     }
-
                 ],
                 "distribute": [
                     {
