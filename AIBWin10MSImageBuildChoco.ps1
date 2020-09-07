@@ -18,3 +18,4 @@ choco install vscode
 choco install putty
 choco install vlc
 choco install winscp
+choco install pwsh
