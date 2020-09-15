@@ -1,9 +1,10 @@
 $currentAzContext = Get-AzContext 
 $subscriptionID=$currentAzContext.Subscription.Id
 $imageResourceGroup="<RSG-NAME>"
-$location="uksouth"
+$location="northeurope"
 $imageTemplateName="<AIB TEMPLATE NAME>"
 $runOutputName="run1"
+$templateFilePath="<LOCATION TO AIB IMAGE TEMPLATE JSON FILE>"
 
 ## UPLOAD THE IMAGE BUILDER TEMPLATE TO AZURE
 New-AzResourceGroupDeployment `
